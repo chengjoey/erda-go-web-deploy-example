@@ -5,6 +5,14 @@ stages:
           alias: git-checkout
           description: 代码仓库克隆
   - stage:
+      - manual-review:
+          alias: manual-review
+          version: "1.0"
+          params:
+            processor:
+              - "2"
+            wating_time: 5
+  - stage:
       - golang:
           alias: go-demo
           description: golang action
