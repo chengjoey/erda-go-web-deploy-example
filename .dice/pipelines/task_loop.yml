@@ -9,3 +9,8 @@ stages:
             - cat /jfeljfl/djflejfl.txt
           loop:
             break: task_status == 'Success'
+            strategy:
+              max_times: 5
+              decline_ratio: 2
+              decline_limit_sec: 60
+              interval_sec: 5
