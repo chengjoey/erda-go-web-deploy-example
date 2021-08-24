@@ -3,6 +3,9 @@ stages:
   - stage:
       - custom-script:
           alias: custom-script
+          description: 运行自定义命令
           version: "1.0"
           commands:
             - cat /jfeljfl/djflejfl.txt
+          loop:
+            break: task_status == 'Success'
