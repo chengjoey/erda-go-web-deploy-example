@@ -2,7 +2,7 @@ version: "1.1"
 stages:
   - stage:
       - k8sflink:
-          alias: das23
+          alias: flink-label-test
           description: 创建 Flink Job 集群
           params:
             bigDataConf:
