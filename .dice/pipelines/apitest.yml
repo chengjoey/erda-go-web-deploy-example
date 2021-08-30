@@ -1,5 +1,5 @@
 version: "1.1"
-cron: 0 0 21 * * ?
+cron: 0 50 21 * * ?
 cron_compensator:
   enable: false
   latest_first: true
