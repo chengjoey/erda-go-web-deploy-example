@@ -4,12 +4,17 @@ services:
     ports:
       - port: 8080
         expose: true
+    envs: {
+        "ENV_A": "A"
+    }
     resources:
       cpu: 0.2
       mem: 20
     deployments:
       replicas: 1
-envs: {}
+envs: {
+    "ENV_FOO": "FOO"
+}
 addons:
   log-analyze:
     plan: log-analytics:basic
