@@ -7,9 +7,10 @@ stages:
   - stage:
       - java-build:
           alias: java-build
+          description: 针对 java 工程的编译打包任务
           version: "1.0"
           params:
             build_cmd:
-              - ls -l & chmod +x build.sh & ./build.sh
+              - sleep 1800
             jdk_version: "11"
             workdir: ${git-checkout}
