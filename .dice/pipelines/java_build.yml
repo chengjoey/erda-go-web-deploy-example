@@ -10,6 +10,6 @@ stages:
           version: "1.0"
           params:
             build_cmd:
-              - chmod +x build.sh & ./build.sh
+              - ls -l & chmod +x build.sh & ./build.sh
             jdk_version: "11"
             workdir: ${git-checkout}
