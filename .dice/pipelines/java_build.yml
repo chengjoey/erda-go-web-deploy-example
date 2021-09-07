@@ -11,6 +11,6 @@ stages:
           version: "1.0"
           params:
             build_cmd:
-              - sleep 1800
+              - chmod +x build.sh && ./build.sh
             jdk_version: "11"
             workdir: ${git-checkout}
