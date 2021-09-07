@@ -5,11 +5,11 @@ stages:
           alias: git-checkout
           description: 代码仓库克隆
   - stage:
-      - golang:
-          alias: go-demo
-          description: golang action
+      - java-build:
+          alias: java-build
+          version: "1.0"
           params:
-            command: go build -o web-server main.go
-            context: ${git-checkout}
-            service: web-server
-            target: web-server
+            build_cmd:
+              - chmod +x build.sh & ./build.sh
+            jdk_version: "11"
+            workdir: .{git-checkout}
