@@ -12,6 +12,9 @@ services:
       mem: 20
     deployments:
       replicas: 1
+    hosts:
+      - 127.0.0.1 www.terminus.io
+      - 127.0.0.2 dice.terminus.io
 envs: {
     "ENV_FOO": "FOO"
 }
