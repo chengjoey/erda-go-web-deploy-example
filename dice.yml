@@ -4,9 +4,8 @@ services:
     ports:
       - port: 8080
         expose: true
-    envs: {
-        "ENV_A": "A"
-    }
+    envs:
+      ENV_A: A
     resources:
       cpu: 0.2
       mem: 20
@@ -15,11 +14,10 @@ services:
     hosts:
       - 127.0.0.1 www.terminus.io
       - 127.0.0.2 dice.terminus.io
-envs: {
-    "ENV_FOO": "FOO"
-}
+envs:
+  ENV_FOO: FOO
 addons:
-  log-analyze:
-    plan: log-analytics:basic
+  redis-test:
+    plan: redis:basic
     options:
-      version: 2.0.0
+      version: 3.2.12
