@@ -1,2 +1,21 @@
 version: "1.1"
-stages: []
+stages:
+  - stage:
+      - git-checkout:
+          alias: git-checkout
+          version: "1.0"
+          params:
+            branch: ((gittar.branch))
+            depth: 1
+            password: ((gittar.password))
+            uri: ((gittar.repo))
+            username: ((gittar.username))
+          resources:
+            cpu: 0.1
+            mem: 1024
+  - stage:
+      - release:
+          alias: release
+          version: "1.0"
+          params:
+            dice_yml: ${git-checkout}/dice.yml
