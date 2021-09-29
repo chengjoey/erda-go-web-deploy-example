@@ -11,7 +11,7 @@ info:
 paths:
   /new-resource:
     get:
-      operationId: test
+      operationId: operationId
       responses:
         "200":
           content:
@@ -22,7 +22,6 @@ paths:
                 x-dice-media: application/json
                 x-dice-name: schema
           description: ""
-      summary: test
       tags:
       - others
   
