@@ -22,6 +22,7 @@ paths:
                 x-dice-media: application/json
                 x-dice-name: schema
           description: ""
+      summary: operationId
       tags:
       - others
   
