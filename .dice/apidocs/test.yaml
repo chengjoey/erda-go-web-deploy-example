@@ -9,11 +9,27 @@ info:
   version: default
   
 paths:
-  /new-resource: {}
+  /new-resource:
+    get:
+      operationId: test
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                example: {}
+                type: object
+                x-dice-media: application/json
+                x-dice-name: schema
+          description: ""
+      summary: test
+      tags:
+      - others
   
 components:
   {}
   
 tags:
   - name: other
+  - name: others
   
