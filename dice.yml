@@ -17,7 +17,7 @@ services:
 envs:
   ENV_FOO: FOO
 addons:
-  redis-test:
-    plan: redis:basic
+  test-mysql:
+    plan: mysql:basic
     options:
-      version: 3.2.12
+      version: 5.7.23
