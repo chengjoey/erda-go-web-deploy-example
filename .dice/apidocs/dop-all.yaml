@@ -1,0 +1,19 @@
+openapi: 3.0.0
+
+info:
+  description: |
+    # API 设计中心创建的 API 文档。
+  
+    请在『API 概况』中填写 API 文档的基本信息；在『API列表』新增接口描述；在『数据类型』中定义要引用的数据结构。
+  title: dop-all
+  version: default
+  
+paths:
+  /new-resource: {}
+  
+components:
+  {}
+  
+tags:
+  - name: other
+  
