@@ -8,5 +8,5 @@ stages:
             branch: ((gittar.branch))
             depth: 1
             password: ((gittar.password))
-            uri: ((gittar.repo))
+            uri: https://erda.dev.terminus.io/erda/dop/go-demo/go-demo
             username: ((gittar.username))
