@@ -3,10 +3,3 @@ stages:
   - stage:
       - git-checkout:
           alias: git-checkout
-          version: "1.0"
-          params:
-            branch: ((gittar.branch))
-            depth: 1
-            password: ((gittar.password))
-            uri: https://erda.dev.terminus.io/erda/dop/go-demo/go-demo
-            username: ((gittar.username))
