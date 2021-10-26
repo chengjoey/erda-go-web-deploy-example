@@ -1,5 +1,7 @@
 version: "1.1"
+cron: 11 17 * * *
 stages:
   - stage:
       - git-checkout:
           alias: git-checkout
+          description: 代码仓库克隆
