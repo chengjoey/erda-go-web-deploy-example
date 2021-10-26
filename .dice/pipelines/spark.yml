@@ -1,2 +1,37 @@
 version: "1.1"
-stages: []
+stages:
+  - stage:
+      - k8sspark:
+          alias: spark-deps
+          description: 创建 Spark Job 集群
+          params:
+            bigDataConf:
+              class: io.terminus.dice.fdp.SparkSqlMain
+              envs:
+                - name: ACTION_OSS_ENDPOINT
+                  value: oss-cn-hangzhou.aliyuncs.com
+                - name: ACTION_OSS_ACCESS_KEY_ID
+                  value: LTAI4GAPeSqzRDUNQ9EGGb55
+                - name: ACTION_OSS_ACCESS_KEY_SECRET
+                  value: gUdhK5t2WdoC5RhPUgdJsMXpgncx6L
+                - name: ACTION_OSS_BUCKET
+                  value: dice-files
+                - name: ACTION_SCRIPT_PATH
+                  value: terminus-captain/1/3940/dwd_gaia2_trans_order_line_paid_di_dev
+              image: registry.cn-hangzhou.aliyuncs.com/terminus/spark:v3.0.0
+              resource: http://dice-files.oss-cn-hangzhou.aliyuncs.com/terminus-dev/spark/jar/fdp-spark-sql-20210302.jar
+              sparkConf:
+                deps:
+                  pyFiles:
+                    - local:///opt/pyspark/py_action/Match.zip
+                    - local:///opt/pyspark/py_action/Rank.zip
+                driverResource:
+                  cpu: "1"
+                  memory: "512"
+                  replica: 1
+                executorResource:
+                  cpu: "1"
+                  memory: "1024"
+                  replica: 1
+                kind: cluster
+                type: Java
