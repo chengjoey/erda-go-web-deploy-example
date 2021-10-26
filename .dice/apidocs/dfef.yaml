@@ -9,7 +9,37 @@ info:
   version: default
   
 paths:
-  /new-resource: {}
+  /project:
+    post:
+      operationId: operationId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                propertyName1: Example
+              properties:
+                propertyName1:
+                  example: Example
+                  type: string
+                  x-dice-name: propertyName1
+                  x-dice-required: true
+              required:
+              - propertyName1
+              type: object
+              x-dice-media: application/json
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                example: {}
+                type: object
+                x-dice-media: application/json
+                x-dice-name: schema
+          description: ""
+      tags:
+      - other
   
 components:
   {}
