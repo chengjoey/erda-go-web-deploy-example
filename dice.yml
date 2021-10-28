@@ -16,8 +16,4 @@ services:
       - 127.0.0.2 dice.terminus.io
 envs:
   ENV_FOO: FOO
-addons:
-  test-mysql:
-    plan: mysql:basic
-    options:
-      version: 5.7.23
+addons: {}
