@@ -7,7 +7,7 @@ services:
     envs:
       ENV_A: A
     resources:
-      cpu: 0.1
+      cpu: 100
       mem: 20
     deployments:
       replicas: 1
