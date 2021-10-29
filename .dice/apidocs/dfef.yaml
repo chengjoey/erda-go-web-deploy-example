@@ -11,7 +11,7 @@ info:
 paths:
   /project:
     post:
-      operationId: operationId
+      operationId: go-web-project
       requestBody:
         content:
           application/json:
@@ -28,6 +28,27 @@ paths:
               - propertyName1
               type: object
               x-dice-media: application/json
+          application/x-www-form-urlencoded:
+            schema:
+              example:
+                a: Example
+                b: Example
+              properties:
+                a:
+                  example: Example
+                  type: string
+                  x-dice-name: a
+                  x-dice-required: true
+                b:
+                  example: Example
+                  type: string
+                  x-dice-name: b
+                  x-dice-required: true
+              required:
+              - a
+              - b
+              type: object
+              x-dice-media: application/x-www-form-urlencoded
       responses:
         "200":
           content:
@@ -38,12 +59,14 @@ paths:
                 x-dice-media: application/json
                 x-dice-name: schema
           description: ""
+      summary: go-web-project
       tags:
-      - other
+      - go-web-project
   
 components:
   {}
   
 tags:
   - name: other
+  - name: go-web-project
   
