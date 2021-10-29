@@ -17,15 +17,15 @@ paths:
           application/json:
             schema:
               example:
-                propertyName1: Example
+                a: Example
               properties:
-                propertyName1:
+                a:
                   example: Example
                   type: string
-                  x-dice-name: propertyName1
+                  x-dice-name: a
                   x-dice-required: true
               required:
-              - propertyName1
+              - a
               type: object
               x-dice-media: application/json
           application/x-www-form-urlencoded:
