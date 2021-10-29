@@ -30,25 +30,20 @@ paths:
               x-dice-media: application/json
           application/x-www-form-urlencoded:
             schema:
+              description: ddd
               example:
                 a: Example
-                b: Example
               properties:
                 a:
                   example: Example
                   type: string
                   x-dice-name: a
                   x-dice-required: true
-                b:
-                  example: Example
-                  type: string
-                  x-dice-name: b
-                  x-dice-required: true
               required:
               - a
-              - b
               type: object
               x-dice-media: application/x-www-form-urlencoded
+        description: ddd
       responses:
         "200":
           content:
