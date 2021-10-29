@@ -30,7 +30,6 @@ paths:
               x-dice-media: application/json
           application/x-www-form-urlencoded:
             schema:
-              description: ddd
               example:
                 a: Example
               properties:
@@ -43,7 +42,6 @@ paths:
               - a
               type: object
               x-dice-media: application/x-www-form-urlencoded
-        description: ddd
       responses:
         "200":
           content:
