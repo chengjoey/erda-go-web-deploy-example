@@ -16,4 +16,8 @@ services:
       - 127.0.0.2 dice.terminus.io
 envs:
   ENV_FOO: FOO
-addons: {}
+addons:
+  config:
+    plan: config-center:basic
+    options:
+      version: 1.0.0
