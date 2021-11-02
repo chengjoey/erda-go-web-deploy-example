@@ -11,6 +11,8 @@ services:
       mem: 200
     deployments:
       replicas: 1
+      selectors:
+        location: go-demo
     hosts:
       - 127.0.0.1 www.terminus.io
       - 127.0.0.2 dice.terminus.io
