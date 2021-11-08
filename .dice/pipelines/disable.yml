@@ -2,13 +2,20 @@ version: "1.1"
 cron: 0 55 10 * * ?
 stages:
   - stage:
-      - api-test:
-          alias: api-test
-          description: 执行单个接口测试。上层可以通过 pipeline.yml 编排一组接口测试的执行顺序。
-          version: "2.0"
+      - snippet:
+          alias: "8866"
           params:
-            body:
-              type: none
-            method: GET
-            url: www.baidu.com
+            apm_demo_repo: "1"
+            jeager_demo_repo: "1"
+            multi_service_repo: "1"
+          labels:
+            AUTOTESTTYPE: STEP
+            STEP: eyJpZCI6ODg2NiwidHlwZSI6IkNPTkZJR1NIRUVUIiwibWV0aG9kIjoiIiwidmFsdWUiOiJ7XCJjb25maWdTaGVldElEXCI6XCIzODA1NDIxMTc5NzU0MzgwMDFcIixcImNvbmZpZ1NoZWV0TmFtZVwiOlwiZ2l0cHVzaFwiLFwicnVuUGFyYW1zXCI6e1wiYXBtX2RlbW9fcmVwb1wiOlwiMVwiLFwiamVhZ2VyX2RlbW9fcmVwb1wiOlwiMVwiLFwibXVsdGlfc2VydmljZV9yZXBvXCI6XCIxXCJ9fSIsIm5hbWUiOiJnaXRwdXNoIiwicHJlSUQiOjg4NjUsInByZVR5cGUiOiJTZXJpYWwiLCJzY2VuZUlEIjo5MTIsInNwYWNlSUQiOjMsImlzRGlzYWJsZWQiOnRydWUsImNyZWF0b3JJRCI6IiIsInVwZGF0ZXJJRCI6IiIsIkNoaWxkcmVuIjpudWxsLCJhcGlTcGVjSUQiOjB9
+            isRefSet: ""
+          snippet_config:
+            source: autotest
+            name: "380542117975438001"
+            labels:
+              snippet_scope: project-autotest-configsheet
+          if: ${{ 1 == 1 }}
           disable: true
