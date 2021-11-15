@@ -1467,6 +1467,7 @@ components:
       - StandardResult
       x-dice-name: StandardResult
     test:
+      example: Example
       type: string
       x-dice-forbidden-types:
       - test
