@@ -1,2 +1,30 @@
 version: "1.1"
-stages: []
+stages:
+  - stage:
+      - k8sspark:
+          alias: tewt222
+          description: 创建 PY_SPARK Job 集群
+          params:
+            bigDataConf:
+              class: io.terminus.erda.fdp.SparkSqlMain
+              envs:
+                - name: PY_MAIN_FILE
+                  value: http://minio.minio-single.svc.cluster.local:9000/dice-files/fdp/files/dev/terminus-dev/1/jobs.py
+                - name: PY_DEPENDENT_FILE
+                  value: http://minio.minio-single.svc.cluster.local:9000/dice-files/fdp/files/dev/terminus-dev/1/predict.zip
+              image: registry.cn-hangzhou.aliyuncs.com/terminus/spark-py:ai_v1.0
+              resource: local:///opt/spark/py_action/jobs.py
+              sparkConf:
+                deps:
+                  pyFiles:
+                    - local:///opt/spark/py_action/predict.zip
+                driverResource:
+                  cpu: "1"
+                  memory: 2048m
+                  replica: 1
+                executorResource:
+                  cpu: "1"
+                  memory: 2048m
+                  replica: 1
+                kind: cluster
+                type: Java
