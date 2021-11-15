@@ -23,7 +23,7 @@ stages:
                   memory: 1024m
                   replica: 1
                 executorResource:
-                  cpu: "1.0"
+                  cpu: "1"
                   memory: 1024m
                   replica: 1
                 kind: cluster
