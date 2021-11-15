@@ -26,11 +26,11 @@ stages:
                     - local: ///opt/spark/py_action/predict.zip
                 driverResource:
                   cpu: "1"
-                  memory: 1022.0m
+                  memory: 1022m
                   replica: 1
                 executorResource:
                   cpu: "1.0"
-                  memory: 1022.0m
+                  memory: 1022m
                   replica: 1
                 kind: cluster
                 type: Java
