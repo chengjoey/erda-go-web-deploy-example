@@ -3,21 +3,15 @@ stages:
   - stage:
       - k8sspark:
           alias: pyspark1
-          description: 创建 PY_SPARK Job 集群
+          description: 创建 Spark-Job 集群
           params:
             bigDataConf:
               class: io.terminus.erda.fdp.SparkSqlMain
               envs:
                 - name: PY_MAIN_FILE
-                  value: http:minio.minio-single.svc.cluster.local:9000/dice-files/fdp/files/dev/terminus-dev/1//jobs.py
+                  value: http://minio.minio-single.svc.cluster.local:9000/dice-files/fdp/files/dev/terminus-dev/1//jobs.py
                 - name: PY_DEPENDENT_FILE
-                  value: http:minio.minio-single.svc.cluster.local:9000/dice-files/fdp/files/dev/terminus-dev/1/predict.zip
-                - name: C3
-                  value: C2
-                - name: a
-                  value: a1
-                - name: B
-                  value: B2
+                  value: http://minio.minio-single.svc.cluster.local:9000/dice-files/fdp/files/dev/terminus-dev/1/predict.zip
               image: registry.cn-hangzhou.aliyuncs.com/terminus/spark-py:ai_v1.0
               resource: local:///opt/spark/py_action/jobs.py
               sparkConf:
@@ -26,11 +20,11 @@ stages:
                     - local: ///opt/spark/py_action/predict.zip
                 driverResource:
                   cpu: "1"
-                  memory: 1022m
+                  memory: 1024m
                   replica: 1
                 executorResource:
                   cpu: "1.0"
-                  memory: 1022m
+                  memory: 1024m
                   replica: 1
                 kind: cluster
                 type: Java
