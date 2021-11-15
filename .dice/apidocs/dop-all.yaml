@@ -3,11 +3,11 @@ openapi: 3.0.0
 info:
   description: |-
     ## 使用注意
-
+  
     这是 erda 的 openapi 服务接口，例如 openapi.erda.cloud，并且需要带上请求头 “Org”，值为组织名称，例如 “terminus”
   title: erda-trantor
   version: "1.0"
-
+  
 paths:
   /api/applications:
     post:
@@ -37,7 +37,7 @@ paths:
                 mode:
                   description: 应用类型，一般填 SERVICE，表示可部署的应用
                   enum:
-                    - SERVICE
+                  - SERVICE
                   example: SERVICE
                   type: string
                   x-dice-name: mode
@@ -78,7 +78,7 @@ paths:
                     type:
                       description: 外置仓库类型，一般填 general
                       enum:
-                        - general
+                      - general
                       example: general
                       type: string
                       x-dice-name: type
@@ -96,18 +96,18 @@ paths:
                       x-dice-name: username
                       x-dice-required: true
                   required:
-                    - type
-                    - url
-                    - username
-                    - password
+                  - type
+                  - url
+                  - username
+                  - password
                   type: object
                   x-dice-name: repoConfig
                   x-dice-required: false
               required:
-                - name
-                - mode
-                - projectId
-                - isExternalRepo
+              - name
+              - mode
+              - projectId
+              - isExternalRepo
               type: object
               x-dice-media: application/json
               x-dice-name: schema
@@ -116,19 +116,22 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                  - $ref: '#/components/schemas/StandardResult'
                 example:
-                  err:
-                    msg: failed
-                  success: true
+                  propertyName1: Example
+                properties:
+                  propertyName1:
+                    example: Example
+                    type: string
+                    x-dice-name: propertyName1
+                    x-dice-required: true
+                required:
+                - propertyName1
                 type: object
                 x-dice-media: application/json
-                x-dice-name: schema
           description: ""
       summary: 创建应用
       tags:
-        - 应用管理
+      - 应用管理
   /api/cicds:
     post:
       operationId: 创建流水线
@@ -164,24 +167,24 @@ paths:
                   x-dice-required: true
                 pipelineYmlSource:
                   enum:
-                    - gittar
+                  - gittar
                   example: gittar
                   type: string
                   x-dice-name: pipelineYmlSource
                   x-dice-required: true
                 source:
                   enum:
-                    - dice
+                  - dice
                   example: dice
                   type: string
                   x-dice-name: source
                   x-dice-required: true
               required:
-                - appID
-                - branch
-                - pipelineYmlName
-                - pipelineYmlSource
-                - source
+              - appID
+              - branch
+              - pipelineYmlName
+              - pipelineYmlSource
+              - source
               type: object
               x-dice-media: application/json
               x-dice-name: schema
@@ -191,7 +194,7 @@ paths:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/StandardResult'
+                - $ref: '#/components/schemas/StandardResult'
                 example:
                   err:
                     msg: failed
@@ -202,45 +205,45 @@ paths:
           description: ""
       summary: 创建流水线
       tags:
-        - 流水线管理
+      - 流水线管理
   /api/configmanage/configs:
     get:
       operationId: 获取应用环境变量
       parameters:
-        - in: query
-          name: appID
-          required: true
-          schema:
-            description: 应用ID
-            example: "5880"
-            type: string
-            x-dice-name: appID
-            x-dice-required: true
+      - in: query
+        name: appID
+        required: true
+        schema:
+          description: 应用ID
+          example: "5880"
+          type: string
           x-dice-name: appID
-        - in: query
-          name: namespace_name
-          required: true
-          schema:
-            description: |-
-              环境空间，字段拼接规则为：app-应用ID-环境缩写，例如: app-5880-DEV、app-5880-TEST、app-5880-STAGING、app-5880-PROD
-              还可以写 app-5880-DEFAULT，表示四个环境可共用的默认配置
-            example: app-5880-DEV
-            type: string
-            x-dice-name: namespace_name
-            x-dice-required: true
+          x-dice-required: true
+        x-dice-name: appID
+      - in: query
+        name: namespace_name
+        required: true
+        schema:
+          description: |-
+            环境空间，字段拼接规则为：app-应用ID-环境缩写，例如: app-5880-DEV、app-5880-TEST、app-5880-STAGING、app-5880-PROD
+            还可以写 app-5880-DEFAULT，表示四个环境可共用的默认配置
+          example: app-5880-DEV
+          type: string
           x-dice-name: namespace_name
+          x-dice-required: true
+        x-dice-name: namespace_name
       responses:
         "200":
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/StandardResult'
+                - $ref: '#/components/schemas/StandardResult'
                 example:
                   data:
-                    - key: Example
-                      type: kv
-                      value: Example
+                  - key: Example
+                    type: kv
+                    value: Example
                   err:
                     msg: failed
                   success: true
@@ -248,12 +251,12 @@ paths:
                   data:
                     description: 配置项列表
                     example:
-                      - key: Example
-                        type: kv
-                        value: Example
+                    - key: Example
+                      type: kv
+                      value: Example
                     items:
                       allOf:
-                        - $ref: '#/components/schemas/ConfigItem'
+                      - $ref: '#/components/schemas/ConfigItem'
                       example:
                         key: Example
                         type: kv
@@ -264,69 +267,69 @@ paths:
                     x-dice-name: data
                     x-dice-required: true
                 required:
-                  - data
+                - data
                 type: object
                 x-dice-media: application/json
                 x-dice-name: schema
           description: ""
       summary: 获取应用环境变量
       tags:
-        - 应用管理
+      - 应用管理
     post:
       description: 支持批量添加环境变量
       operationId: 新增应用配置项
       parameters:
-        - in: query
-          name: appID
-          required: true
-          schema:
-            description: 应用ID
-            example: "5880"
-            type: string
-            x-dice-name: appID
-            x-dice-required: true
+      - in: query
+        name: appID
+        required: true
+        schema:
+          description: 应用ID
+          example: "5880"
+          type: string
           x-dice-name: appID
-        - in: query
-          name: encrypt
-          required: true
-          schema:
-            description: 是否需要加密，一般为 false
-            example: false
-            type: boolean
-            x-dice-name: encrypt
-            x-dice-required: true
+          x-dice-required: true
+        x-dice-name: appID
+      - in: query
+        name: encrypt
+        required: true
+        schema:
+          description: 是否需要加密，一般为 false
+          example: false
+          type: boolean
           x-dice-name: encrypt
-        - in: query
-          name: namespace_name
-          required: true
-          schema:
-            description: |-
-              环境空间，字段拼接规则为：app-应用ID-环境缩写，例如: app-5880-DEV、app-5880-TEST、app-5880-STAGING、app-5880-PROD
-              还可以写 app-5880-DEFAULT，表示四个环境可共用的默认配置
-            example: app-5880-DEV
-            type: string
-            x-dice-name: namespace_name
-            x-dice-required: true
+          x-dice-required: true
+        x-dice-name: encrypt
+      - in: query
+        name: namespace_name
+        required: true
+        schema:
+          description: |-
+            环境空间，字段拼接规则为：app-应用ID-环境缩写，例如: app-5880-DEV、app-5880-TEST、app-5880-STAGING、app-5880-PROD
+            还可以写 app-5880-DEFAULT，表示四个环境可共用的默认配置
+          example: app-5880-DEV
+          type: string
           x-dice-name: namespace_name
+          x-dice-required: true
+        x-dice-name: namespace_name
       requestBody:
         content:
           application/json:
             schema:
               example:
                 configs:
-                  - key: Example
-                    type: kv
-                    value: Example
+                - key: Example
+                  type: kv
+                  value: Example
               properties:
                 configs:
                   description: 要添加的配置项
                   example:
-                    - key: Example
-                      type: kv
-                      value: Example
+                  - key: Example
+                    type: kv
+                    value: Example
                   items:
                     allOf:
-                      - $ref: '#/components/schemas/ConfigItem'
+                    - $ref: '#/components/schemas/ConfigItem'
                     example:
                       key: Example
                       type: kv
@@ -337,7 +340,7 @@ paths:
                   x-dice-name: configs
                   x-dice-required: true
               required:
-                - configs
+              - configs
               type: object
               x-dice-media: application/json
               x-dice-name: schema
@@ -347,7 +350,7 @@ paths:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/StandardResult'
+                - $ref: '#/components/schemas/StandardResult'
                 example:
                   err:
                     msg: failed
@@ -358,51 +361,51 @@ paths:
           description: ""
       summary: 新增应用配置项
       tags:
-        - 应用管理
+      - 应用管理
   /api/gateway/openapi/packages:
     get:
       description: 获取流量入口列表中，scene 为 unity 的流量入口的 bindDomain 中的第一个，即为 trantor 使用的网关域名
       operationId: API网关流量入口列表
       parameters:
-        - in: query
-          name: projectId
-          required: true
-          schema:
-            description: 项目 ID
-            example: 1
-            type: number
-            x-dice-name: projectId
-            x-dice-required: true
+      - in: query
+        name: projectId
+        required: true
+        schema:
+          description: 项目 ID
+          example: 1
+          type: number
           x-dice-name: projectId
-        - in: query
-          name: env
-          required: true
-          schema:
-            description: 环境
-            enum:
-              - DEV
-              - TEST
-              - STAGING
-              - PROD
-            example: DEV
-            type: string
-            x-dice-name: env
-            x-dice-required: true
+          x-dice-required: true
+        x-dice-name: projectId
+      - in: query
+        name: env
+        required: true
+        schema:
+          description: 环境
+          enum:
+          - DEV
+          - TEST
+          - STAGING
+          - PROD
+          example: DEV
+          type: string
           x-dice-name: env
+          x-dice-required: true
+        x-dice-name: env
       responses:
         "200":
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/StandardResult'
+                - $ref: '#/components/schemas/StandardResult'
                 example:
                   data:
                     list:
-                      - bindDomain:
-                          - test-gateway.hkci.terminus.io
-                        id: Example
-                        scene: unity
+                    - bindDomain:
+                      - test-gateway.hkci.terminus.io
+                      id: Example
+                      scene: unity
                   err:
                     msg: failed
                   success: true
@@ -410,23 +413,23 @@ paths:
                   data:
                     example:
                       list:
-                        - bindDomain:
-                            - test-gateway.hkci.terminus.io
-                          id: Example
-                          scene: unity
+                      - bindDomain:
+                        - test-gateway.hkci.terminus.io
+                        id: Example
+                        scene: unity
                     properties:
                       list:
                         example:
-                          - bindDomain:
-                              - test-gateway.hkci.terminus.io
-                            id: Example
-                            scene: unity
+                        - bindDomain:
+                          - test-gateway.hkci.terminus.io
+                          id: Example
+                          scene: unity
                         items:
                           allOf:
-                            - $ref: '#/components/schemas/GatewayEndpoint'
+                          - $ref: '#/components/schemas/GatewayEndpoint'
                           example:
                             bindDomain:
-                              - test-gateway.hkci.terminus.io
+                            - test-gateway.hkci.terminus.io
                             id: Example
                             scene: unity
                           type: object
@@ -435,87 +438,87 @@ paths:
                         x-dice-name: list
                         x-dice-required: true
                     required:
-                      - list
+                    - list
                     type: object
                     x-dice-name: data
                     x-dice-required: true
                 required:
-                  - data
+                - data
                 type: object
                 x-dice-media: application/json
                 x-dice-name: schema
           description: ""
       summary: API网关流量入口列表
       tags:
-        - API网关
+      - API网关
   /api/projects:
     get:
       description: 分页查询项目
       operationId: 项目列出
       parameters:
-        - in: query
-          name: orgId
-          required: true
-          schema:
-            example: 1
-            type: integer
-            x-dice-name: orgId
-            x-dice-required: true
+      - in: query
+        name: orgId
+        required: true
+        schema:
+          example: 1
+          type: integer
           x-dice-name: orgId
-        - in: query
-          name: q
-          schema:
-            description: 按项目名称搜索
-            example: dop
-            type: string
-            x-dice-name: q
-            x-dice-required: false
+          x-dice-required: true
+        x-dice-name: orgId
+      - in: query
+        name: q
+        schema:
+          description: 按项目名称搜索
+          example: dop
+          type: string
           x-dice-name: q
-        - in: query
-          name: pageSize
-          schema:
-            default: 20
-            example: 20
-            type: integer
-            x-dice-name: pageSize
-            x-dice-required: false
+          x-dice-required: false
+        x-dice-name: q
+      - in: query
+        name: pageSize
+        schema:
+          default: 20
+          example: 20
+          type: integer
           x-dice-name: pageSize
-        - in: query
-          name: pageNo
-          schema:
-            default: 1
-            example: 1
-            type: integer
-            x-dice-name: pageNo
-            x-dice-required: false
+          x-dice-required: false
+        x-dice-name: pageSize
+      - in: query
+        name: pageNo
+        schema:
+          default: 1
+          example: 1
+          type: integer
           x-dice-name: pageNo
-        - in: query
-          name: is_public
-          schema:
-            default: false
-            description: 是否为公开项目
-            example: true
-            type: boolean
-            x-dice-name: is_public
-            x-dice-required: false
+          x-dice-required: false
+        x-dice-name: pageNo
+      - in: query
+        name: is_public
+        schema:
+          default: false
+          description: 是否为公开项目
+          example: true
+          type: boolean
           x-dice-name: is_public
-        - in: query
-          name: asc
-          schema:
-            description: 是否升序
-            example: true
-            type: boolean
-            x-dice-name: asc
-            x-dice-required: false
+          x-dice-required: false
+        x-dice-name: is_public
+      - in: query
+        name: asc
+        schema:
+          description: 是否升序
+          example: true
+          type: boolean
           x-dice-name: asc
-        - in: query
-          name: orderBy
-          schema:
-            example: activeTime
-            type: string
-            x-dice-name: orderBy
-            x-dice-required: false
+          x-dice-required: false
+        x-dice-name: asc
+      - in: query
+        name: orderBy
+        schema:
+          example: activeTime
+          type: string
           x-dice-name: orderBy
+          x-dice-required: false
+        x-dice-name: orderBy
       responses:
         "200":
           content:
@@ -524,6 +527,41 @@ paths:
                 example:
                   data:
                     list:
+                    - CanManage: true
+                      activeTime: "2021-09-24 15:07:14"
+                      blockStatus: Example
+                      canUnblock: Example
+                      clusterConfig:
+                        DEV: Example
+                        PROD: Example
+                        STAGING: Example
+                        TEST: Example
+                      cpuAddonUsed: 1
+                      cpuQuota: 1
+                      cpuServiceUsed: 1
+                      createdAt: "2021-09-24T15:07:14+08:00"
+                      creator: "2"
+                      ddHook: Example
+                      desc: Example
+                      displayName: Example
+                      id: 1
+                      isPublic: true
+                      joined: true
+                      logo: Example
+                      memAddonUsed: 1
+                      memQuota: 1
+                      memServiceUsed: 1
+                      name: Example
+                      orgId: 1
+                      owners:
+                      - Example
+                      type: DevOps
+                      updatedAt: "2021-09-24T15:07:14+08:00"
+                    total: 11
+                properties:
+                  data:
+                    example:
+                      list:
                       - CanManage: true
                         activeTime: "2021-09-24 15:07:14"
                         blockStatus: Example
@@ -551,14 +589,14 @@ paths:
                         name: Example
                         orgId: 1
                         owners:
-                          - Example
+                        - Example
                         type: DevOps
                         updatedAt: "2021-09-24T15:07:14+08:00"
-                    total: 11
-                properties:
-                  data:
-                    example:
+                      total: 11
+                    properties:
                       list:
+                        description: 项目列表
+                        example:
                         - CanManage: true
                           activeTime: "2021-09-24 15:07:14"
                           blockStatus: Example
@@ -586,44 +624,9 @@ paths:
                           name: Example
                           orgId: 1
                           owners:
-                            - Example
+                          - Example
                           type: DevOps
                           updatedAt: "2021-09-24T15:07:14+08:00"
-                      total: 11
-                    properties:
-                      list:
-                        description: 项目列表
-                        example:
-                          - CanManage: true
-                            activeTime: "2021-09-24 15:07:14"
-                            blockStatus: Example
-                            canUnblock: Example
-                            clusterConfig:
-                              DEV: Example
-                              PROD: Example
-                              STAGING: Example
-                              TEST: Example
-                            cpuAddonUsed: 1
-                            cpuQuota: 1
-                            cpuServiceUsed: 1
-                            createdAt: "2021-09-24T15:07:14+08:00"
-                            creator: "2"
-                            ddHook: Example
-                            desc: Example
-                            displayName: Example
-                            id: 1
-                            isPublic: true
-                            joined: true
-                            logo: Example
-                            memAddonUsed: 1
-                            memQuota: 1
-                            memServiceUsed: 1
-                            name: Example
-                            orgId: 1
-                            owners:
-                              - Example
-                            type: DevOps
-                            updatedAt: "2021-09-24T15:07:14+08:00"
                         items:
                           example:
                             CanManage: true
@@ -653,7 +656,7 @@ paths:
                             name: Example
                             orgId: 1
                             owners:
-                              - Example
+                            - Example
                             type: DevOps
                             updatedAt: "2021-09-24T15:07:14+08:00"
                           properties:
@@ -705,10 +708,10 @@ paths:
                                   x-dice-name: TEST
                                   x-dice-required: true
                               required:
-                                - DEV
-                                - PROD
-                                - STAGING
-                                - TEST
+                              - DEV
+                              - PROD
+                              - STAGING
+                              - TEST
                               type: object
                               x-dice-name: clusterConfig
                               x-dice-required: true
@@ -803,7 +806,7 @@ paths:
                             owners:
                               description: 项目所有者ID列表
                               example:
-                                - Example
+                              - Example
                               items:
                                 example: Example
                                 type: string
@@ -822,31 +825,31 @@ paths:
                               x-dice-name: updatedAt
                               x-dice-required: true
                           required:
-                            - CanManage
-                            - activeTime
-                            - blockStatus
-                            - canUnblock
-                            - clusterConfig
-                            - cpuAddonUsed
-                            - cpuQuota
-                            - cpuServiceUsed
-                            - createdAt
-                            - creator
-                            - ddHook
-                            - desc
-                            - displayName
-                            - id
-                            - isPublic
-                            - joined
-                            - logo
-                            - memAddonUsed
-                            - memQuota
-                            - memServiceUsed
-                            - name
-                            - orgId
-                            - owners
-                            - type
-                            - updatedAt
+                          - CanManage
+                          - activeTime
+                          - blockStatus
+                          - canUnblock
+                          - clusterConfig
+                          - cpuAddonUsed
+                          - cpuQuota
+                          - cpuServiceUsed
+                          - createdAt
+                          - creator
+                          - ddHook
+                          - desc
+                          - displayName
+                          - id
+                          - isPublic
+                          - joined
+                          - logo
+                          - memAddonUsed
+                          - memQuota
+                          - memServiceUsed
+                          - name
+                          - orgId
+                          - owners
+                          - type
+                          - updatedAt
                           type: object
                           x-dice-name: items
                         type: array
@@ -859,19 +862,19 @@ paths:
                         x-dice-name: total
                         x-dice-required: true
                     required:
-                      - list
-                      - total
+                    - list
+                    - total
                     type: object
                     x-dice-name: data
                     x-dice-required: true
                 required:
-                  - data
+                - data
                 type: object
                 x-dice-media: application/json
           description: ""
       summary: 项目列出
       tags:
-        - 项目管理
+      - 项目管理
     post:
       operationId: 项目新建
       requestBody:
@@ -928,10 +931,10 @@ paths:
                       x-dice-name: TEST
                       x-dice-required: true
                   required:
-                    - DEV
-                    - TEST
-                    - STAGING
-                    - PROD
+                  - DEV
+                  - TEST
+                  - STAGING
+                  - PROD
                   type: object
                   x-dice-name: clusterConfig
                   x-dice-required: true
@@ -1007,14 +1010,14 @@ paths:
                   x-dice-name: template
                   x-dice-required: true
               required:
-                - clusterConfig
-                - cpuQuota
-                - creator
-                - displayName
-                - memQuota
-                - name
-                - orgId
-                - template
+              - clusterConfig
+              - cpuQuota
+              - creator
+              - displayName
+              - memQuota
+              - name
+              - orgId
+              - template
               type: object
               x-dice-media: application/json
               x-dice-name: schema
@@ -1040,14 +1043,14 @@ paths:
                     x-dice-name: success
                     x-dice-required: true
                 required:
-                  - success
-                  - data
+                - success
+                - data
                 type: object
                 x-dice-media: application/json
           description: ""
       summary: 项目新建
       tags:
-        - 项目管理
+      - 项目管理
     put:
       operationId: 更新项目 /api/projects/{id}
       requestBody:
@@ -1098,10 +1101,10 @@ paths:
                       x-dice-name: TEST
                       x-dice-required: true
                   required:
-                    - DEV
-                    - PROD
-                    - STAGING
-                    - TEST
+                  - DEV
+                  - PROD
+                  - STAGING
+                  - TEST
                   type: object
                   x-dice-name: clusterConfig
                   x-dice-required: true
@@ -1148,15 +1151,15 @@ paths:
                   x-dice-name: name
                   x-dice-required: true
               required:
-                - clusterConfig
-                - cpuQuota
-                - ddHook
-                - desc
-                - displayName
-                - isPublic
-                - logo
-                - memQuota
-                - name
+              - clusterConfig
+              - cpuQuota
+              - ddHook
+              - desc
+              - displayName
+              - isPublic
+              - logo
+              - memQuota
+              - name
               type: object
               x-dice-media: application/json
       responses:
@@ -1181,22 +1184,22 @@ paths:
                     x-dice-name: success
                     x-dice-required: true
                 required:
-                  - success
-                  - data
+                - success
+                - data
                 type: object
                 x-dice-media: application/json
           description: ""
       summary: 更新项目 /api/projects/{id}
       tags:
-        - 项目管理
+      - 项目管理
   /api/projects/{id}:
     parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          example: Example
-          type: string
+    - in: path
+      name: id
+      required: true
+      schema:
+        example: Example
+        type: string
     put:
       operationId: 更新项目
       requestBody:
@@ -1248,10 +1251,10 @@ paths:
                       x-dice-name: TEST
                       x-dice-required: true
                   required:
-                    - DEV
-                    - PROD
-                    - STAGING
-                    - TEST
+                  - DEV
+                  - PROD
+                  - STAGING
+                  - TEST
                   type: object
                   x-dice-name: clusterConfig
                   x-dice-required: true
@@ -1302,11 +1305,11 @@ paths:
                   x-dice-name: name
                   x-dice-required: true
               required:
-                - clusterConfig
-                - cpuQuota
-                - displayName
-                - memQuota
-                - name
+              - clusterConfig
+              - cpuQuota
+              - displayName
+              - memQuota
+              - name
               type: object
               x-dice-media: application/json
               x-dice-name: schema
@@ -1332,16 +1335,16 @@ paths:
                     x-dice-name: success
                     x-dice-required: true
                 required:
-                  - data
-                  - success
+                - data
+                - success
                 type: object
                 x-dice-media: application/json
                 x-dice-name: schema
           description: ""
       summary: 更新项目
       tags:
-        - 项目管理
-
+      - 项目管理
+  
 components:
   schemas:
     ConfigItem:
@@ -1367,7 +1370,7 @@ components:
         type:
           description: 配置类型
           enum:
-            - kv
+          - kv
           example: kv
           type: string
           x-dice-name: type
@@ -1379,25 +1382,25 @@ components:
           x-dice-name: value
           x-dice-required: true
       required:
-        - key
-        - value
-        - type
-        - encrypt
+      - key
+      - value
+      - type
+      - encrypt
       type: object
       x-dice-forbidden-types:
-        - ConfigItem
+      - ConfigItem
       x-dice-name: ConfigItem
     GatewayEndpoint:
       example:
         bindDomain:
-          - test-gateway.hkci.terminus.io
+        - test-gateway.hkci.terminus.io
         id: Example
         scene: unity
       properties:
         bindDomain:
           description: 流量入口绑定的域名
           example:
-            - test-gateway.hkci.terminus.io
+          - test-gateway.hkci.terminus.io
           items:
             example: test-gateway.hkci.terminus.io
             type: string
@@ -1414,20 +1417,20 @@ components:
         scene:
           description: 流量入口场景，unity 代表统一域名入口，即 trantor 使用的流量入口
           enum:
-            - webapi
-            - openapi
-            - unity
+          - webapi
+          - openapi
+          - unity
           example: unity
           type: string
           x-dice-name: scene
           x-dice-required: true
       required:
-        - bindDomain
-        - scene
-        - id
+      - bindDomain
+      - scene
+      - id
       type: object
       x-dice-forbidden-types:
-        - GatewayEndpoint
+      - GatewayEndpoint
       x-dice-name: GatewayEndpoint
     StandardResult:
       example:
@@ -1446,7 +1449,7 @@ components:
               x-dice-name: msg
               x-dice-required: true
           required:
-            - msg
+          - msg
           type: object
           x-dice-name: err
           x-dice-required: true
@@ -1457,13 +1460,13 @@ components:
           x-dice-name: success
           x-dice-required: true
       required:
-        - success
-        - err
+      - success
+      - err
       type: object
       x-dice-forbidden-types:
-        - StandardResult
+      - StandardResult
       x-dice-name: StandardResult
-
+  
 tags:
   - name: other
   - name: iterations
@@ -1472,3 +1475,4 @@ tags:
   - name: 项目管理
   - name: 流水线管理
   - name: API网关
+  
