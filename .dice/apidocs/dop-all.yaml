@@ -1466,6 +1466,11 @@ components:
       x-dice-forbidden-types:
       - StandardResult
       x-dice-name: StandardResult
+    undefined:
+      example: {}
+      type: object
+      x-dice-forbidden-types:
+      - null
   
 tags:
   - name: other
