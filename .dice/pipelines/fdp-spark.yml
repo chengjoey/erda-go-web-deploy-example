@@ -17,7 +17,7 @@ stages:
               sparkConf:
                 deps:
                   pyFiles:
-                    - local: ///opt/spark/py_action/predict.zip
+                    - local:///opt/spark/py_action/predict.zip
                 driverResource:
                   cpu: "1"
                   memory: 1024m
