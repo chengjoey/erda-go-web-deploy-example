@@ -3,7 +3,7 @@ stages:
   - stage:
       - k8sspark:
           alias: pyspark1
-          description: 创建 PY_SPARK Job
+          description: 创建 Spark-Job 集群
           params:
             bigDataConf:
               class: io.terminus.erda.fdp.SparkSqlMain
@@ -20,11 +20,11 @@ stages:
                     - local: ///opt/spark/py_action/predict.zip
                 driverResource:
                   cpu: "1"
-                  memory: 1022m
+                  memory: 1024m
                   replica: 1
                 executorResource:
                   cpu: "1.0"
-                  memory: 1022m
+                  memory: 1024m
                   replica: 1
                 kind: cluster
                 type: Java
