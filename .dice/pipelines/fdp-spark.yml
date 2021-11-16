@@ -2,7 +2,7 @@ version: "1.1"
 stages:
   - stage:
       - k8sspark:
-          alias: pyspark1
+          alias: tewt222
           description: 创建 Spark-Job 集群
           params:
             bigDataConf:
@@ -17,7 +17,7 @@ stages:
               sparkConf:
                 deps:
                   pyFiles:
-                    - local: ///opt/spark/py_action/predict.zip
+                    - local:///opt/spark/py_action/predict.zip
                 driverResource:
                   cpu: "1"
                   memory: 1024m
