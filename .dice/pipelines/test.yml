@@ -2,6 +2,20 @@ version: "1.1"
 cron: 11 17 * * *
 stages:
   - stage:
-      - git-checkout:
-          alias: git-checkout
-          description: 代码仓库克隆
+      - contrast-security:
+          alias: contrast-security
+          version: "1.0"
+          params:
+            api_key: aa
+            app_id: "1"
+            assert_count: 2
+            expand: vulnerability_instances
+            org_id: aa
+            service_key: aa
+            severities:
+              - MEDIUM
+              - HIGH
+              - CRITICAL
+              - LOW
+            status: Reported
+            username: aa
