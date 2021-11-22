@@ -4,18 +4,19 @@ stages:
   - stage:
       - contrast-security:
           alias: contrast-security
+          description: 安全漏洞收集
           version: "1.0"
           params:
-            api_key: aa
-            app_id: "1"
+            api_key: nm0RbxPZST23oG66YbldAhL26E0pze7Y
+            app_id: 2ffdab1f-d249-4a23-9f24-21facf19ab4b
             assert_count: 2
             expand: vulnerability_instances
-            org_id: aa
-            service_key: aa
+            org_id: 53e898ae-9cfb-4ff0-93ef-82faa773f89e
+            service_key: 2RXN4VCIBS9A52VZ
             severities:
               - MEDIUM
               - HIGH
               - CRITICAL
               - LOW
             status: Reported
-            username: aa
+            username: xinc.vendor@herbalife.com
