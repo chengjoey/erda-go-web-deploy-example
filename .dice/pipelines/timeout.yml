@@ -3,9 +3,11 @@ stages:
   - stage:
       - custom-script:
           alias: custom-script
+          description: 运行自定义命令
           version: "1.0"
           commands:
             - sleep 3600
+          timeout: 600
           resources:
             cpu: 0.1
             mem: 256
