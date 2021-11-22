@@ -7,7 +7,7 @@ stages:
           version: "1.0"
           commands:
             - sleep 3600
-          timeout: 10
+          timeout: 100
           resources:
             cpu: 0.1
             mem: 256
