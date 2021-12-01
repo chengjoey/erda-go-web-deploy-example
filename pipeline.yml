@@ -19,6 +19,8 @@ stages:
             context: ${git-checkout}
             service: web-server
             target: web-server
+          caches:
+            - path: /root/.cache
   - stage:
       - release:
           alias: release
