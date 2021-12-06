@@ -3,6 +3,9 @@ stages:
   - stage:
       - custom-script:
           alias: custom-script
+          description: 运行自定义命令
           version: "1.0"
           commands:
             - sleep 30
+          caches:
+            - path: /root/.cache
