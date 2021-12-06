@@ -6,6 +6,6 @@ stages:
           description: 运行自定义命令
           version: "1.0"
           commands:
-            - sleep 300
+            - lsof +D /opt
           caches:
             - path: /root/.cache
