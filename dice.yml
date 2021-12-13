@@ -22,3 +22,4 @@ addons:
     options:
       version: 1.0.0
   go-demo-addon:
+    # plan: a:b
