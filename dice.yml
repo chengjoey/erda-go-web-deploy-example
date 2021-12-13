@@ -22,4 +22,6 @@ addons:
     options:
       version: 1.0.0
   go-demo-addon:
-    # plan: a:b
+    # plan: config-center:basic
+    # options:
+    #   version: 1.0.0
